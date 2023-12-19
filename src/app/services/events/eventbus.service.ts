@@ -12,6 +12,8 @@ export class EventBusService {
   }
 
   public emit(eventType: string, data?: any): void {
+    console.log("Event Emitted:",eventType);
+    console.table(data);
     this.events.next({ type: eventType, data });
   }
 

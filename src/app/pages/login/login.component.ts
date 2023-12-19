@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {EventBusService}from '../../services/events/eventbus.service'
 import { SubSink } from 'subsink';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit,OnDestroy {
 
   public login: any ={};
   public subs = new SubSink();
-  constructor( private EventBusService: EventBusService) { 
+  constructor( private EventBusService: EventBusService, private router: Router) { 
     
   }
   public btnLogin_Click() {
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
+    
   }
 
 }

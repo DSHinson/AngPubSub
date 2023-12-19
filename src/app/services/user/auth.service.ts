@@ -15,7 +15,12 @@ export class AuthService implements OnDestroy {
   constructor(private EventBusService: EventBusService) { 
     this.subs.sink=this.EventBusService.on("login:attempt").subscribe((data: any)=>{
       this.user.next(data);
+      this.EventBusService.emit('login:complete');
     });
+
+    this.subs.sink = this.EventBusService.on('login:complete').subscribe((data:any)=>{
+      this.EventBusService.emit('navigateTo','/home');
+    })
   }
 
   public currentUser():Observable<any>{
